@@ -51,7 +51,7 @@ nav ul {
 
 nav li:first-child {
     margin-right: auto;
-    font-family: Merriweather, Poppins
+    font-family: Merriweather, Poppins;
     font-weight: bold;
 }
 
@@ -96,15 +96,15 @@ h1 {
 }
 
 .text-container p {
-    gap: 7
+    gap: 7;
     margin: 3em 0 1em 0;
-    gap: 12
+    gap: 12;
     font-size: 1.25rem;
 }
 
 .text-container {
     text-decoration: none;
-    gap: 30
+    gap: 30;
     margin: 30em 0 1em 0;
     padding: min(2em, 15%);
 }
@@ -138,7 +138,7 @@ h1 {
 }
 
 section {
-    padding: 5em min(2em, 15%)
+    padding: 5em min(2em, 15%);
     background-color: var(--color-2);
     text-align: center;
 }
