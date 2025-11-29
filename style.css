@@ -319,9 +319,40 @@ footer a:hover {
     margin-top: 40px;
 }
 
-.portfolio-img {
+#my-work 
+/* --- CLEAN IMAGE GRID WITH FIXED IMAGE SIZES --- */
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 300px); /* 3 images per row, each 300px wide */
+    gap: 20px;
+    justify-content: center; /* centers the whole grid */
+    margin: 0 auto;
+}
+
+.image-gallery img {
     width: 300px;
     height: 400px;
-    object-fit: cover;   /* crops images nicely while keeping them equal size */
-    border-radius: 10px; /* optional */
+    object-fit: cover;   /* keeps images from stretching */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Mobile responsive */
+@media (max-width: 1000px) {
+    .image-gallery {
+        grid-template-columns: repeat(2, 300px);
+    }
+}
+
+@media (max-width: 650px) {
+    .image-gallery {
+        grid-template-columns: repeat(1, 300px);
+    }
+}
+
+
