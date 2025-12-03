@@ -20,9 +20,8 @@
     width: 100vw;
     height: 100vh;
     border: none;
-    z-index: -9999;
-    pointer-events: none; /* iframe doesn’t block clicking */
-    overflow: hidden;
+    z-index: -1; /* push behind all content */
+    pointer-events: none; /* allows clicking page normally okay cool*/
 }
 
 /* Prevent white body background */
