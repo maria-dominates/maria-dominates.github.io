@@ -6,51 +6,93 @@
     <title>Case Studies – Maria van Niekerk</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- SAME HEADER/NAV AS OTHER PAGES -->
-   <div id="navbar-placeholder"></div>
+    <!-- Background (optional) -->
+    <iframe id="bg-iframe" src="background.html"></iframe>
+
+    <!-- NAVBAR PLACEHOLDER -->
+    <div id="navbar-placeholder"></div>
 
     <!-- PAGE CONTENT -->
     <main>
         <section>
             <h1>My App Building/Designing Case Study</h1>
+
             <p>Here you can look through one of my projects in great depth, including process, challenges, and final results.</p>
-            <p>During Design class last year we were tasked to build a app using Thunkable and Firebase. The goal was for our apps to be able to create, read, update and delete. We were learning about "relationshipsbetween datasets can be modeled, analyzed, evaluated, and communicated in a variety of forms to recognize trends that influence our products, systems and institutions." Some process I went through include Brainstorming, Inquiring, Analysing, Reaserching, Creating Proto-Types, Building and Reflecting.
-</p>
+
+            <p>
+                During Design class last year we were tasked to build an app using Thunkable and Firebase.
+                The goal was for our apps to be able to create, read, update and delete. In this unit I had to learn about the "relationships between datasets can be modeled, analyzed, evaluated, and communicated in a variety of forms to recognize trends that influence our products, systems and institutions."
+            </p>
+
+            <p>
+                My app idea was to create a virtual Lost and Found so students could find their lost items
+                faster, more efficiently and build community by having students collaberate and communicate with others they don't speak with on a daily basis.
+            </p>
+
+            <section id="planning-prototypes">
+                <h2>Planning & Prototypes</h2>
+                <div class="image-row">
+                    <img src="images/Wireframe/Mockup_Idea_1.png" alt="Image 6">
+                    <img src="images/Wireframe/Mockup_Idea_2.png" alt="Image 7">
+                    <img src="images/Wireframe/Mockup_Idea_3.png" alt="Image 8">
+                </div>
+           
+ <header>
+
+<div class="two-column-text">
+    <div class="col box">
+        <p><strong>Success Criteria Thoughts:</strong></p>
 
 
-    <p>My app idea was to create a virtual Lost and Found so students could find their lost items faster, more effienctly and it would build the community by connecting with people who we don't usually connect with on a daily basis, informing them of where their lost item may be or if they've seen it since its been misplaced.</p>
+        <p>
+            CRUD functions in one simple screen, which also meets my goals and designs for the app to have the ideal look of. 
+            Now for my Success Criteria;
+            <br><br>
+            • Support CRUD functions (Create, Read, Update, Delete) using Firebase and Thunkable.<br>
+            • Include essential UI components (buttons, labels, input fields) for interactivity.<br>
+            • Ensure all components function correctly by integrating them into the app logic.<br>
+            • Enable smooth screen navigation using the "Navigate to" function.<br>
+            • Maintain a clear, consistent design to enhance user engagement and readability.<br><br>
 
+            I find all of my screens above successfully meet and follow this criteria, meaning that this design has now successfully accomplished both Ms. Fontanillia’s criteria and my hopes for the appeal and functionality of the assignment.
 
-                <div class="flex-container"> </div>
+            I also chose this design because it was consistent, clean, easy to read, and made from the perspective of a phone. Everything flows well and navigation is simple, which is necessary for users to stay engaged.
+        </p>
+    </div>
 
-            <div class="case-study">
-                <div class="flex-container"> </div>
+    <div class="col box">
+        <p> <strong> Reflection </strong></p>
 
+        <p>
+            A couple of days into the project some of my peers began coding and already had an idea of how certain functions worked in Thunkable. I, however, didn’t understand many of the block functions, which caused me to fall behind.
 
-<section id="planning-prototypes">
-  <h2>Planning & Prototypes</h2>
-  <div class="image-row">
-    <img src="images/Wireframe/Mockup_Idea_1.png" alt="Image 6">
-    <img src="images/Wireframe/Mockup_Idea_2.png" alt="Image 7">
-    <img src="images/Wireframe/Mockup_Idea_3.png" alt="Image 8">
-  </div>
-</section>
+            I tried repeatedly, but nothing made sense and I couldn’t get much help because my teacher was assisting other students. I was overwhelmed with work and progress became slow.
 
+            Eventually, I spoke up and got help from my teacher and my brother, who had previously used Thunkable. Their guidance helped me restart my progress and continue moving forward with the project.
 
-               
-        
+            After gradually finishing with some assistance I had to sort out some kinks and issues my code was facing after not wanting to proceed or trying to complete a task, which was so frustrating to me. 
+            
+            I tried to put in work towards the code but nothing would work leading me to putting the task off and continuing ontowards the next unit. Since then I’ve had a few pushes of help along the way from guidance and reminders to being completely finished.
+
+        </p>
+    </div>
+</div>
+
             <a href="about.html" class="cta-button">Back to Portfolio</a>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <section id="contact">
         <a href="">LinkedIn</a>
         <a href="about.html">My Work</a>
         <a href="mailto:mvanniekerk@sjkeagles.com">Contact</a>
     </section>
 
+    <!-- NAVBAR SCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             fetch('navbar.html?t=' + Date.now())
@@ -64,19 +106,12 @@
                     const hamburger = nav.querySelector('#hamburger');
 
                     if (hamburger && navList) {
-                        // Toggle menu open/close
                         hamburger.addEventListener('click', () => {
                             navList.classList.toggle('open');
-
-                            // Toggle hamburger/X
-                            if (navList.classList.contains('open')) {
-                                hamburger.textContent = '✕'; // X icon
-                            } else {
-                                hamburger.textContent = '☰'; // hamburger icon
-                            }
+                            hamburger.textContent =
+                                navList.classList.contains('open') ? '✕' : '☰';
                         });
 
-                        // Close menu when clicking a link
                         navList.querySelectorAll('a').forEach(link => {
                             link.addEventListener('click', () => {
                                 navList.classList.remove('open');
@@ -84,7 +119,6 @@
                             });
                         });
 
-                        // Optional: close menu when clicking outside
                         document.addEventListener('click', (e) => {
                             if (!nav.contains(e.target)) {
                                 navList.classList.remove('open');
@@ -92,10 +126,11 @@
                             }
                         });
                     }
-                })
-                .catch(err => console.error('Failed to load navbar:', err));
+                });
         });
-     </script>
+    </script>
+
+
 
 </body>
 </html>

@@ -490,3 +490,56 @@ nav::after {
 body {
     padding-top: 80px; /* adjust according to navbar height */
 }
+
+.two-column-text {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.two-column-text .col {
+    flex: 1;
+}
+
+.box {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 800px) {
+    .two-column-text {
+        flex-direction: column;
+    }
+}
+
+/* FINAL PRODUCT SECTION */
+.final-product {
+    text-align: center;
+    margin: 10px auto; /* less vertical spacing */
+}
+
+.final-product h2 {
+    font-size: 2rem;
+    margin-bottom: 5px; /* reduce space between heading and image */
+    color: white; /* change if needed */
+}
+
+/* Centered square image */
+.final-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.final-image-container img {
+    width: 450px;   /* larger size */
+    height: 450px;  /* keeps it square */
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
