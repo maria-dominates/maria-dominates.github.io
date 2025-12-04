@@ -8,42 +8,79 @@
 </head>
 
 <body>
+
+    <!-- FULLSCREEN BACKGROUND WITH 3JS-->
+    <iframe id="bg-iframe" src="background.html"></iframe>
+
     <!-- SAME NAV AS HOME PAGE -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Maria van Niekerk</a></li>
-                <li><a href="about.html">Portfolio</a></li>
-                <li><a href="case-studies.html">Case Studies</a></li>
-                <li><a href="index.html#my-work">My Work</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+        <div id="navbar-placeholder"></div>
 
     <!-- PAGE CONTENT -->
     <section>
         <h1>My Portfolio</h1>
         <p>Visual Art</p>
+        <br><br>
+
+        <div class="image-gallery">
+            <img src="images/painting skull image.png" alt="Image 1">
+            <img src="images/image of lady.png" alt="Image 2">
+            <img src="images/red and blue trees.png" alt="Image 3">
+            <img src="images/watercolour blue and yellow.png" alt="Image 4">
+            <img src="images/black and white marker.png" alt="Image 5">
+        </div>
     </section>
 
-<section id="my-work">
-    <div class="image-gallery">
-        <img src="images/painting skull image.png" alt="Image 1">
-        <img src="images/image of lady.png" alt="Image 2">
-        <img src="images/red and blue trees.png" alt="Image 3">
-        <img src="images/watercolour blue and yellow.png" alt="Image 4">
-        <img src="images/black and white marker.png" alt="Image 5">
-    </div>
-</section>
-
-
-
-       <footer>
-        <a href="https://www.linkedin.com">LinkedIn</a> |
-        <a href="index.html#my-work">My Work</a> |
+    <section id="contact">
+        <a href="">LinkedIn</a>
+        <a href="about.html">My Work</a>
         <a href="mailto:mvanniekerk@sjkeagles.com">Contact</a>
-    </footer>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('navbar.html?t=' + Date.now())
+                .then(res => res.text())
+                .then(data => {
+                    const placeholder = document.getElementById('navbar-placeholder');
+                    placeholder.innerHTML = data;
+
+                    const nav = placeholder.querySelector('nav');
+                    const navList = nav.querySelector('ul');
+                    const hamburger = nav.querySelector('#hamburger');
+
+                    if (hamburger && navList) {
+                        // Toggle menu open/close
+                        hamburger.addEventListener('click', () => {
+                            navList.classList.toggle('open');
+
+                            // Toggle hamburger/X
+                            if (navList.classList.contains('open')) {
+                                hamburger.textContent = '✕'; // X icon
+                            } else {
+                                hamburger.textContent = '☰'; // hamburger icon
+                            }
+                        });
+
+                        // Close menu when clicking a link
+                        navList.querySelectorAll('a').forEach(link => {
+                            link.addEventListener('click', () => {
+                                navList.classList.remove('open');
+                                hamburger.textContent = '☰';
+                            });
+                        });
+
+                        // Optional: close menu when clicking outside
+                        document.addEventListener('click', (e) => {
+                            if (!nav.contains(e.target)) {
+                                navList.classList.remove('open');
+                                hamburger.textContent = '☰';
+                            }
+                        });
+                    }
+                })
+                .catch(err => console.error('Failed to load navbar:', err));
+        });
+     </script>
 
 </body>
 </html>

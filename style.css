@@ -54,34 +54,6 @@ h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
 }
 
-
-nav { 
-    margin: 1em auto 3em auto;
-    width: min(1000px, 100%);
-}
-
-nav ul {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    gap: 2em;
-}
-
-nav li:first-child {
-    margin-right: auto;
-    font-family: Merriweather, Poppins;
-    font-weight: bold;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
 header, section {
     margin: 2em auto;
     width: min(65em, 95%);     /* narrower than before */
@@ -121,13 +93,6 @@ h1 {
     font-size: 1.25rem;
 }
 
-.text-container {
-    text-decoration: none;
-    gap: 30;
-    margin: 30em 0 1em 0;
-    padding: min(2em, 15%);
-}
-
 .cta-button { 
     display: inline-block;
     text-decoration: none;
@@ -158,8 +123,9 @@ h1 {
 
 section {
     padding: 5em min(2em, 15%);
-    background-color: var(--color-2);
+    background-color: rgba(255, 255, 255, 0.75) !important;
     text-align: center;
+    backdrop-filter: blur(6px);
 }
 
 h2 {
@@ -307,35 +273,6 @@ footer a:hover {
     }
 }
 
-@media(max-width:640px) {
-    nav li {
-        display: none;
-    }
-
-    nav li:first-child,
-    nav li:last-child {
-        display: block;
-
-    }
-
-    header {
-       margin-top: 0; 
-    }
-
-    .cta-button {
-        margin-top: .5em;
-        width: 100%;  
-    }
-
-    .text-container p {
-        font-size: 1rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-}
-
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -388,7 +325,7 @@ footer a:hover {
 }
 
 .image-row img {
-  width: 300px;
+  width: 50%;
   height: 400px;
   object-fit: cover;
   border-radius: 10px;
@@ -418,3 +355,138 @@ footer a:hover {
   }
 }
 
+/* --- Navbar Container --- */
+nav {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    position: fixed; /* sticks to top */
+    top: 0;
+    left: 0;
+    z-index: 999999; /* insanely high to always be on top */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- Brand / Logo --- */
+nav .brand {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* --- Desktop Menu --- */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav li {
+    position: relative;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* --- Hamburger --- */
+#hamburger {
+    display: none; /* hidden on desktop */
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000000; /* above everything */
+    transition: all 0.3s ease;
+}
+
+#hamburger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+/* --- Mobile Menu --- */
+@media (max-width: 768px) {
+    #hamburger {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.97);
+        padding: 1rem 0;
+        margin: 0;
+        list-style: none;
+        z-index: 999998;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+
+        display: none; /* hidden by default */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    nav ul.open {
+        display: flex;
+        max-height: 1000px; /* plenty of space */
+        opacity: 1;
+    }
+
+    nav li {
+        display: block;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    nav a {
+        font-size: 1.3rem;
+        padding: 0.5rem 0;
+        color: #333;
+    }
+
+    nav a:hover {
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+}
+
+/* --- Optional: Subtle separator line --- */
+nav::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: rgba(0,0,0,0.05);
+    margin-top: 0.5rem;
+}
+
+/* --- Ensure content below nav does not overlap --- */
+body {
+    padding-top: 80px; /* adjust according to navbar height */
+}
